@@ -48,7 +48,8 @@ pipeline {
                  sh 'mvn install -Dmaven.test.skip=false'
             }
         }
-
+    stage{'Environment Analysis'){
+        parallel{
         stage('Printing All Global Variables') {
             steps {
                 sh """
@@ -66,6 +67,8 @@ pipeline {
                 sh "echo ${APP_ENV}"
             }
         }
+        }
+    }
 
     }   
 }
